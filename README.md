@@ -1,0 +1,2 @@
+# LintCode
+Practice is everything!
