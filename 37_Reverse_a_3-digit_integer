@@ -10,6 +10,7 @@ Example 2:
 	Output:9
 
 My Submission:
+{% highlight java %}
 	import java.lang.Math;
 	public class Solution{
 		public int reverseInteger(int number){
@@ -25,7 +26,7 @@ My Submission:
 			return result;
 		}
 	}
-
+{% endhighlight %}
 Better Solution:
 	public class Solution{
 		public int reverseInteger(int number){
