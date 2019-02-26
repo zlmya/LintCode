@@ -1,5 +1,3 @@
-
-'''java
 Description
 Reverse a 3-digit integer.
 
