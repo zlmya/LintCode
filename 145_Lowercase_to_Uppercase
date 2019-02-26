@@ -1,0 +1,24 @@
+Description
+Convert a lowercase character to uppercase.
+
+Example
+Example 1:
+        Input: 'a'
+        Output: 'A'
+Example 2:
+        Input: 'b'
+        Output: 'B'
+        
+My submission
+        public class Solution{
+            public char lowercaseToUppercase(char character){
+                return (char)((int)character - 32)
+            }
+        }
+        
+Better Solution
+        public class Solution{
+            public char lowercaseToUppercase(char character){
+                return (char)(character + 'A' - 'a');
+            }
+        }
