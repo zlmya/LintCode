@@ -9,7 +9,7 @@ Example 2:
 	Input: number = 900
 	Output:9
 
-My Submission
+My Submission:
 	import java.lang.Math;
 	public class Solution{
 		public int reverseInteger(int number){
@@ -21,6 +21,18 @@ My Submission
 				}else{
 					result += temp * (int)Math.pow(10, 2-i);
 				}
+			}
+			return result;
+		}
+	}
+
+Better Solution:
+	public class Solution{
+		public int reverseInteger(int number){
+			int result = 0;
+			while(number>0){
+				result =result*10 + number%10;
+				number /= 10;
 			}
 			return result;
 		}
