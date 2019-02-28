@@ -1,0 +1,75 @@
+Description
+	Given two non-negative integers num1 and num2 represented as string, return the sum of num1 and num2.
+		The length of both num1 and num2 is < 5100.
+		Both num1 and num2 contains only digits 0-9.
+		Both num1 and num2 does not contain any leading zero.
+		You must not use any built-in BigInteger library or convert the inputs to integer directly.
+Example
+	Input : num1 = "123", num2 = "45"
+	Output : 168
+
+My submission
+	public class Solution {
+		/**
+		 * @param num1: a non-negative integers
+		 * @param num2: a non-negative integers
+		 * @return: return sum of num1 and num2
+		 */
+		public String addStrings(String num1, String num2) {
+			// write your code here
+			int len1 = num1.length();
+			int len2 = num2.length();
+			int maxLength = len1 > len2 ? len1 : len2;
+
+			int[] arr1 = new int[maxLength + 1];
+			int[] arr2 = new int[maxLength + 1];
+			int[] sumArr = new int[maxLength + 1];
+
+			for(int i = 0; i < len1; i++){
+				arr1[i] = num1.charAt(len1 - 1 - i) - '0';
+			}
+
+			for(int i = 0; i < len2; i++){
+				arr2[i] = num2.charAt(len2 - 1 - i) - '0';
+			}
+
+			for(int i = 0; i < maxLength; i++){
+				int temp = arr1[i] + arr2[i] + sumArr[i];
+				if (temp >= 10){
+					sumArr[i] = temp - 10;
+					sumArr[i+1] += 1;
+				}else{
+					sumArr[i] = temp;   
+				}
+			}
+
+			StringBuilder sb = new StringBuilder();
+			boolean findFirst = false;
+			for(int i = maxLength; i >= 0; i--){
+				if(!findFirst){
+					findFirst = true;
+					if(sumArr[i] == 0){
+						continue;
+					}
+				}
+				sb.append(sumArr[i]);
+			}
+			return sb.toString();
+		}
+	}
+
+Better Solution:
+
+	public String addStrings(String num1, String num2) {
+		int i = num1.length() - 1, j = num2.length() - 1, carry = 0;
+		String res = "";
+		while (i >= 0 || j >= 0) {
+			if (i >= 0)
+				carry += num1.charAt(i--) - '0';
+			if (j >= 0)
+				carry += num2.charAt(j--) - '0';
+			res = Integer.toString(carry % 10) + res;
+			carry /= 10;
+		}
+		return carry != 0 ? "1" + res : res;
+	}
